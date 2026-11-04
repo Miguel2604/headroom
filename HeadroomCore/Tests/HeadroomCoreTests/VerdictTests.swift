@@ -114,3 +114,11 @@ private func plan(_ id: PlanID, fiveHour used: Double, resets: Date, weekly: Dou
         #expect(spokenDuration(3600 + 60) == "1 hour 1 minute")
     }
 }
+
+@Suite struct GlyphTests {
+    @Test func rowsFollowTheFiveHourWindows() {
+        // Mockup: Claude 38% left, Codex 77% left.
+        #expect(glyphRows(Snapshot(claude: sampleClaude, codex: sampleCodex), at: sampleNow) == GlyphRows(claude: 2, codex: 4))
+        #expect(glyphRows(Snapshot(claude: PlanSnapshot(id: .claude), codex: sampleCodex), at: sampleNow) == GlyphRows(claude: 0, codex: 4))
+    }
+}

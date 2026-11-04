@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24AAE5F97B18DFCB795D286F /* HeadroomCore in Frameworks */ = {isa = PBXBuildFile; productRef = 99E0247ACE7E6682A4962F92 /* HeadroomCore */; };
+		2974EEA1C928B199B6B4DCED /* HeadroomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */; };
+		63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */; };
+		7C77554473E320B67E7F0E1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94BFA196A5539E753D24A3 /* SettingsView.swift */; };
+		8FD80CB328DE9CB92EC1A11E /* HeadroomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9B0525E0E946893A6136DDB7 /* HeadroomUI */; };
+		96840EF4BFE8024943204444 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28C7FC75AEA712BF322DE9 /* PanelView.swift */; };
+		DC844463F663BF17660DAD6B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887DB972FFCA9CC5B5472D5 /* Store.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadroomApp.swift; sourceTree = "<group>"; };
+		1E80C3142251E59C561CCCBC /* Headroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6A32C536A66A638404C701 /* HeadroomCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HeadroomCore; path = HeadroomCore; sourceTree = SOURCE_ROOT; };
+		4A94BFA196A5539E753D24A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5B28C7FC75AEA712BF322DE9 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		7887DB972FFCA9CC5B5472D5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		C4BFBC593A832BE551F45464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Headroom.entitlements; sourceTree = "<group>"; };
+		FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0598300E07FB9068601F7EA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24AAE5F97B18DFCB795D286F /* HeadroomCore in Frameworks */,
+				8FD80CB328DE9CB92EC1A11E /* HeadroomUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13629C64DC71E34FB562AF3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E80C3142251E59C561CCCBC /* Headroom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E2AC0590D8E0EEBB3FA5F0E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				3A6A32C536A66A638404C701 /* HeadroomCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		62D65A057EA50D3E86A7F9F4 = {
+			isa = PBXGroup;
+			children = (
+				9CCEA420ED033F4E41BB6C9A /* App */,
+				1E2AC0590D8E0EEBB3FA5F0E /* Packages */,
+				13629C64DC71E34FB562AF3F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CCEA420ED033F4E41BB6C9A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */,
+				13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */,
+				C4BFBC593A832BE551F45464 /* Info.plist */,
+				FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */,
+				5B28C7FC75AEA712BF322DE9 /* PanelView.swift */,
+				4A94BFA196A5539E753D24A3 /* SettingsView.swift */,
+				7887DB972FFCA9CC5B5472D5 /* Store.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4686BFD5F1855F6871F8CA0A /* Headroom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E29D1F7476724620C0F38FD /* Build configuration list for PBXNativeTarget "Headroom" */;
+			buildPhases = (
+				E34AB7BC39BA4447F5B8BCDF /* Sources */,
+				0598300E07FB9068601F7EA2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Headroom;
+			packageProductDependencies = (
+				99E0247ACE7E6682A4962F92 /* HeadroomCore */,
+				9B0525E0E946893A6136DDB7 /* HeadroomUI */,
+			);
+			productName = Headroom;
+			productReference = 1E80C3142251E59C561CCCBC /* Headroom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5F2DC8D92D80C6725E159CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4686BFD5F1855F6871F8CA0A = {
+						DevelopmentTeam = ZVM726QTBU;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8911E810F17D902BDE660A7F /* Build configuration list for PBXProject "Headroom" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 62D65A057EA50D3E86A7F9F4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5EC069F0CD046C2F57025A7E /* XCLocalSwiftPackageReference "HeadroomCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 13629C64DC71E34FB562AF3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4686BFD5F1855F6871F8CA0A /* Headroom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E34AB7BC39BA4447F5B8BCDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2974EEA1C928B199B6B4DCED /* HeadroomApp.swift in Sources */,
+				63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */,
+				96840EF4BFE8024943204444 /* PanelView.swift in Sources */,
+				7C77554473E320B67E7F0E1D /* SettingsView.swift in Sources */,
+				DC844463F663BF17660DAD6B /* Store.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		574DEEAA03EDB3B78AFC97D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Headroom.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.miguelkalawdev.headroom;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6F8182B0FA7E1163F14CC5E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZVM726QTBU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		701DB6FC9B95C9FCADE9A78C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/Headroom.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.miguelkalawdev.headroom;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C67A61C4264023A03B96474D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZVM726QTBU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E29D1F7476724620C0F38FD /* Build configuration list for PBXNativeTarget "Headroom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				574DEEAA03EDB3B78AFC97D7 /* Debug */,
+				701DB6FC9B95C9FCADE9A78C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8911E810F17D902BDE660A7F /* Build configuration list for PBXProject "Headroom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C67A61C4264023A03B96474D /* Debug */,
+				6F8182B0FA7E1163F14CC5E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		5EC069F0CD046C2F57025A7E /* XCLocalSwiftPackageReference "HeadroomCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = HeadroomCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99E0247ACE7E6682A4962F92 /* HeadroomCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HeadroomCore;
+		};
+		9B0525E0E946893A6136DDB7 /* HeadroomUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HeadroomUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F5F2DC8D92D80C6725E159CD /* Project object */;
+}

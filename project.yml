@@ -1,0 +1,52 @@
+name: Headroom
+options:
+  bundleIdPrefix: com.miguelkalawdev
+  deploymentTarget:
+    macOS: "14.0"
+packages:
+  HeadroomCore:
+    path: HeadroomCore
+settings:
+  base:
+    DEVELOPMENT_TEAM: ZVM726QTBU
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_HARDENED_RUNTIME: YES
+    DEAD_CODE_STRIPPING: YES
+targets:
+  Headroom:
+    type: application
+    platform: macOS
+    sources: [App]
+    dependencies:
+      - package: HeadroomCore
+        product: HeadroomCore
+      - package: HeadroomCore
+        product: HeadroomUI
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Headroom
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.developer-tools
+        CFBundleURLTypes:
+          - CFBundleURLName: com.miguelkalawdev.headroom
+            CFBundleURLSchemes: [headroom]
+    entitlements:
+      path: App/Headroom.entitlements
+      properties:
+        com.apple.security.application-groups: [ZVM726QTBU.com.miguelkalawdev.headroom]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.miguelkalawdev.headroom
+schemes:
+  Headroom:
+    build:
+      targets:
+        Headroom: all
+    run:
+      config: Debug

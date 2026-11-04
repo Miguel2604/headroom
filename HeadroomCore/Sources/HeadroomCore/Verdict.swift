@@ -149,3 +149,14 @@ func spokenDuration(_ seconds: TimeInterval) -> String {
     if m < 60 { return unit(m, "minute") }
     return m % 60 == 0 ? unit(m / 60, "hour") : "\(unit(m / 60, "hour")) \(unit(m % 60, "minute"))"
 }
+
+public struct GlyphRows: Equatable, Sendable {
+    public var claude: Int
+    public var codex: Int
+}
+
+/// Lit dots, out of five, for the menu bar glyph: Claude Code on top, Codex below, from each 5-hour window.
+public func glyphRows(_ s: Snapshot, at now: Date) -> GlyphRows {
+    func lit(_ p: PlanSnapshot) -> Int { p[.fiveHour].map { Int(($0.pace(at: now).left / 20).rounded()) } ?? 0 }
+    return GlyphRows(claude: lit(s.claude), codex: lit(s.codex))
+}
