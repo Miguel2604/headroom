@@ -117,3 +117,37 @@ private func sessions(_ files: [(path: String, contents: String, age: TimeInterv
         #expect(Snapshot.read(from: URL(filePath: "/nonexistent.json")) == nil)
     }
 }
+
+@Suite struct FreshnessTests {
+    let codex = PlanSnapshot(id: .codex, windows: sampleCodex.windows, asOf: sampleNow - 6 * 3600)
+
+    @Test func claudeGoesStaleWhenTheAppStopsUpdating() {
+        var claude = sampleClaude
+        claude.asOf = sampleNow - 31 * 60
+        let s = Snapshot(claude: claude, codex: codex).flaggingStale(at: sampleNow)
+        #expect(s.claude.problem == .failed("Open Headroom to update"))
+        #expect(s.claude.windows == claude.windows)
+        // Codex data is only as fresh as the last Codex run, so old is normal.
+        #expect(s.codex.problem == nil)
+        claude.asOf = sampleNow - 10 * 60
+        #expect(Snapshot(claude: claude, codex: codex).flaggingStale(at: sampleNow).claude.problem == nil)
+    }
+
+    @Test func claudeFetchTimeAloneIsNotAWidgetChange() {
+        var a = Snapshot(claude: sampleClaude, codex: codex), b = a
+        b.claude.asOf = sampleNow + 300
+        #expect(a.forWidgets == b.forWidgets)
+        b.claude.windows[0].usedPercent += 1
+        #expect(a.forWidgets != b.forWidgets)
+        a.claude.problem = .failed("Offline")
+        #expect(a.forWidgets != Snapshot(claude: sampleClaude, codex: codex).forWidgets)
+    }
+
+    @Test func asOfShowsCodexAndAnythingFailing() {
+        var s = Snapshot(claude: sampleClaude, codex: PlanSnapshot(id: .codex, windows: sampleCodex.windows, asOf: at("2026-11-04T04:24:00Z")))
+        #expect(asOfLine(s, timeZone: utc) == "Codex 04:24")
+        s.claude.problem = .failed("Offline")
+        #expect(asOfLine(s, timeZone: utc) == "Claude 09:41 · Codex 04:24")
+        #expect(asOfLine(Snapshot(claude: PlanSnapshot(id: .claude), codex: PlanSnapshot(id: .codex)), timeZone: utc) == "")
+    }
+}

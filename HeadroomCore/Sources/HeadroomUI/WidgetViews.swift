@@ -179,8 +179,8 @@ public struct LargeView: View {
             HStack {
                 HStack(spacing: 8) {
                     Text(kind.label).lbl()
-                    if let w, plan.problem == nil { NoteView(note(for: w, at: now)) }
-                    else if let problem = plan.problem { Text(problem.message).lbl().secondary() }
+                    if let problem = plan.problem, kind == .fiveHour { Text(problem.message).lbl().secondary() }
+                    else if let w { NoteView(note(for: w, at: now)) }
                 }
                 Spacer(minLength: 0)
                 Text(pace.map { percent($0.left) } ?? "--").num(20)

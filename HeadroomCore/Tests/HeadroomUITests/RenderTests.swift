@@ -58,5 +58,8 @@ import Testing
         #expect(render("state-expiring", SmallView(plan: expiring, now: now), width: 170, height: 170) != nil)
         let missing = Snapshot(claude: s.claude, codex: PlanSnapshot(id: .codex, problem: .notSetUp("Run Codex once to see its limits")))
         #expect(render("large-missing", LargeView(snapshot: missing, now: now), width: 364, height: 382) != nil)
+        var stale = s
+        stale.claude.asOf = now - 3600
+        #expect(render("large-stale", LargeView(snapshot: stale.flaggingStale(at: now), now: now), width: 364, height: 382, dark: false) != nil)
     }
 }

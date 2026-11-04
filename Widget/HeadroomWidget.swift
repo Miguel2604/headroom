@@ -53,7 +53,7 @@ struct Entry<Intent: WidgetConfigurationIntent>: TimelineEntry {
 /// Reads the snapshot the app wrote; never touches ~/.codex or the Keychain.
 struct Provider<Intent: WidgetConfigurationIntent>: AppIntentTimelineProvider {
     private var stored: Snapshot {
-        AppGroup.snapshotURL.flatMap(Snapshot.read) ?? Snapshot(
+        AppGroup.snapshotURL.flatMap(Snapshot.read)?.flaggingStale(at: .now) ?? Snapshot(
             claude: PlanSnapshot(id: .claude, problem: .notSetUp("Open Headroom")),
             codex: PlanSnapshot(id: .codex, problem: .notSetUp("Open Headroom")))
     }
@@ -63,7 +63,7 @@ struct Provider<Intent: WidgetConfigurationIntent>: AppIntentTimelineProvider {
     }
 
     func snapshot(for intent: Intent, in context: Context) async -> Entry<Intent> {
-        let s = AppGroup.snapshotURL.flatMap(Snapshot.read)
+        let s = AppGroup.snapshotURL.flatMap(Snapshot.read)?.flaggingStale(at: .now)
         return Entry(date: .now, snapshot: s ?? .sample(at: .now), intent: intent)
     }
 

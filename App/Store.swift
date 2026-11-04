@@ -14,6 +14,7 @@ final class Store {
 
     @ObservationIgnored private var lastClaudeFetch = Date.distantPast
     @ObservationIgnored private var lastWritten: Data?
+    @ObservationIgnored private var lastReloaded: Snapshot?
     @ObservationIgnored private var watcher: FolderWatcher?
     private let codex = CodexReader()
     private let claude = ClaudeClient()
@@ -53,7 +54,10 @@ final class Store {
         do {
             try data.write(to: url, options: .atomic)
             lastWritten = data
-            WidgetCenter.shared.reloadAllTimelines()
+            if snapshot.forWidgets != lastReloaded {
+                lastReloaded = snapshot.forWidgets
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         } catch {
             NSLog("Headroom: couldn't write the widget snapshot: \(error.localizedDescription)")
         }

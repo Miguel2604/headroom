@@ -83,6 +83,24 @@ public struct Snapshot: Codable, Equatable, Sendable {
     public func write(to url: URL) throws {
         try JSONEncoder().encode(self).write(to: url, options: .atomic)
     }
+
+    /// What the widgets show. Claude is fetched every 5 minutes, and its fetch time alone
+    /// mustn't spend WidgetKit's reload budget.
+    public var forWidgets: Snapshot {
+        var s = self
+        s.claude.asOf = nil
+        return s
+    }
+
+    /// The app refreshes Claude every 5 minutes, so much older numbers mean it has stopped.
+    /// Codex numbers are only as fresh as the last Codex run, so they're never stale.
+    public func flaggingStale(at now: Date) -> Snapshot {
+        var s = self
+        if s.claude.problem == nil, let asOf = s.claude.asOf, now.timeIntervalSince(asOf) > 30 * 60 {
+            s.claude.problem = .failed("Open Headroom to update")
+        }
+        return s
+    }
 }
 
 /// Shared between the app and the widget extension.

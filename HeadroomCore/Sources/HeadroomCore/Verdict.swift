@@ -129,6 +129,14 @@ public func menuBarSummary(_ s: Snapshot, at now: Date, timeZone tz: TimeZone = 
     return MenuBarSummary(text: percent(tightest), spoken: "Coding quotas: tightest limit \(Int(tightest.rounded())) percent left")
 }
 
+/// "Codex 04:24": how old the numbers are, for Codex (only as fresh as its last run) and for
+/// any plan that couldn't update. Live Claude numbers need no timestamp.
+public func asOfLine(_ s: Snapshot, timeZone tz: TimeZone = .current) -> String {
+    s.plans.filter { $0.id == .codex || $0.problem != nil }
+        .compactMap { p in p.asOf.map { "\(p.id.short) \(clockTime($0, tz))" } }
+        .joined(separator: " · ")
+}
+
 public func percent(_ x: Double) -> String { "\(Int(x.rounded()))%" }
 
 /// 24-hour "HH:mm", as in the mockups.

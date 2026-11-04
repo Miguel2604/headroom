@@ -1,4 +1,5 @@
 import HeadroomCore
+import ServiceManagement
 import SwiftUI
 import WidgetKit
 
@@ -8,9 +9,19 @@ struct SettingsView: View {
     @AppStorage(DesktopKeys.show) private var desktopPanel = false
     @AppStorage(DesktopKeys.layout) private var layout = DesktopLayout.large
     @AppStorage(DesktopKeys.locked) private var locked = false
+    @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
 
     var body: some View {
         Form {
+            Toggle("Launch at login", isOn: $launchAtLogin)
+                .onChange(of: launchAtLogin) { _, on in
+                    do {
+                        if on { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
+                    } catch {
+                        NSLog("Headroom: launch at login: \(error.localizedDescription)")
+                        launchAtLogin = SMAppService.mainApp.status == .enabled
+                    }
+                }
             Toggle("Show text next to the menu bar icon", isOn: $showText)
             Section {
                 Picker("Background", selection: $background) {

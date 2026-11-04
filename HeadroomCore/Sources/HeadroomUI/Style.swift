@@ -129,16 +129,20 @@ public func spokenLabel(_ plan: PlanSnapshot, _ kind: WindowKind, now: Date) -> 
     return plan.problem.map { "\(base). \($0.message)" } ?? base
 }
 
-/// "Claude 09:41 · Codex 04:24": how old each plan's numbers are.
-public func asOfLine(_ s: Snapshot) -> String {
-    s.plans.compactMap { p in p.asOf.map { "\(p.id.short) \(clockTime($0))" } }.joined(separator: " · ")
-}
-
 /// The tinted-glass fill: a dark or light translucent layer over a blur.
 public struct TintedGlass: View {
     @Environment(\.colorScheme) private var scheme
+    @Environment(\.accessibilityReduceTransparency) private var solid
     public init() {}
     public var body: some View {
+        if solid {
+            scheme == .dark ? Color(white: 0.11) : Color(white: 0.95)
+        } else {
+            glass
+        }
+    }
+
+    private var glass: some View {
         ZStack {
             Rectangle().fill(.ultraThinMaterial)
             scheme == .dark ? Color(red: 12 / 255, green: 12 / 255, blue: 12 / 255).opacity(0.46) : Color.white.opacity(0.5)
