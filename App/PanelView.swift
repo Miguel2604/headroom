@@ -43,6 +43,9 @@ struct PanelView: View {
         }
         .padding(6)
         .frame(width: 312)
+        // Take the full ideal height. Otherwise the window can come up short and SwiftUI
+        // shrinks the Doto numbers and clips the last row.
+        .fixedSize(horizontal: false, vertical: true)
     }
 
     /// Problems first, then how old each plan's numbers are.
