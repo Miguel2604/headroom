@@ -74,6 +74,20 @@ private func sessions(_ files: [(path: String, contents: String, age: TimeInterv
         #expect(windows[0].pace(at: sampleNow).status == .reset)
     }
 
+    @Test func mapsResponsesToStates() throws {
+        let good = try Data(contentsOf: fixture("claude-usage.json"))
+        let ok = ClaudeClient.snapshot(status: 200, data: good, tier: "Max", now: sampleNow)
+        #expect(ok.problem == nil)
+        #expect(ok.windows.count == 2)
+        #expect(ok.asOf == sampleNow)
+        #expect(ok.tier == "Max")
+        let failure = { (status: Int, data: Data) in ClaudeClient.snapshot(status: status, data: data, tier: "Max", now: sampleNow).problem }
+        #expect(failure(200, Data("{}".utf8)) == .failed("Claude usage changed format"))
+        #expect(failure(401, Data()) == .failed("Open Claude Code to refresh sign-in"))
+        #expect(failure(429, Data()) == .failed("Claude is limiting usage checks"))
+        #expect(failure(503, Data()) == .failed("Claude usage returned 503"))
+    }
+
     @Test func parsesCredentials() throws {
         let c = try #require(ClaudeClient.Credentials(json: Data(contentsOf: fixture("claude-credentials.json"))))
         #expect(c.accessToken == "sk-ant-oat01-test")

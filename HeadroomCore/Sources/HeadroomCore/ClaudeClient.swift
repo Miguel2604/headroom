@@ -34,13 +34,18 @@ public struct ClaudeClient: Sendable {
         request.setValue("Bearer \(c.accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("oauth-2025-04-20", forHTTPHeaderField: "anthropic-beta")
         guard let (data, response) = try? await Self.session.data(for: request) else { return failed("Couldn't reach Claude") }
-        switch (response as? HTTPURLResponse)?.statusCode ?? 0 {
+        return Self.snapshot(status: (response as? HTTPURLResponse)?.statusCode ?? 0, data: data, tier: c.tier, now: Date())
+    }
+
+    static func snapshot(status: Int, data: Data, tier: String?, now: Date) -> PlanSnapshot {
+        func failed(_ message: String) -> PlanSnapshot { PlanSnapshot(id: .claude, tier: tier, problem: .failed(message)) }
+        switch status {
         case 200:
-            guard let windows = try? Self.parseUsage(data) else { return failed("Claude usage changed format") }
-            return PlanSnapshot(id: .claude, tier: c.tier, windows: windows, asOf: Date())
+            guard let windows = try? parseUsage(data) else { return failed("Claude usage changed format") }
+            return PlanSnapshot(id: .claude, tier: tier, windows: windows, asOf: now)
         case 401, 403: return failed("Open Claude Code to refresh sign-in")
         case 429: return failed("Claude is limiting usage checks")
-        case let code: return failed("Claude usage returned \(code)")
+        default: return failed("Claude usage returned \(status)")
         }
     }
 
