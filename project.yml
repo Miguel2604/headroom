@@ -25,6 +25,7 @@ targets:
         product: HeadroomCore
       - package: HeadroomCore
         product: HeadroomUI
+      - target: HeadroomWidget
     info:
       path: App/Info.plist
       properties:
@@ -43,6 +44,31 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.miguelkalawdev.headroom
+  HeadroomWidget:
+    type: app-extension
+    platform: macOS
+    sources: [Widget]
+    dependencies:
+      - package: HeadroomCore
+        product: HeadroomCore
+      - package: HeadroomCore
+        product: HeadroomUI
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Headroom
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/HeadroomWidget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups: [ZVM726QTBU.com.miguelkalawdev.headroom]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.miguelkalawdev.headroom.widget
 schemes:
   Headroom:
     build:

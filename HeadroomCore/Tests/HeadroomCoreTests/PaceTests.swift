@@ -78,3 +78,25 @@ let sampleCodex = PlanSnapshot(id: .codex, tier: "Plus", windows: [
         #expect(dots(left: 43, evenLeft: 3, count: 14).filter { $0 == .on }.count == 5)
     }
 }
+
+@Suite struct TimelineTests {
+    @Test func everyFiveMinutesForAnHour() {
+        let s = Snapshot(claude: PlanSnapshot(id: .claude, windows: [LimitWindow(kind: .fiveHour, usedPercent: 10, resetsAt: sampleNow + 4 * 3600)]), codex: PlanSnapshot(id: .codex))
+        let dates = timelineDates(s, from: sampleNow)
+        #expect(dates.count == 12)
+        #expect(dates.first == sampleNow)
+        #expect(dates.last == sampleNow + 55 * 60)
+    }
+
+    @Test func stopsAtTheNextReset() {
+        let s = Snapshot(claude: sampleClaude, codex: PlanSnapshot(id: .codex, windows: [
+            LimitWindow(kind: .fiveHour, usedPercent: 10, resetsAt: sampleNow + 12 * 60),
+            LimitWindow(kind: .weekly, usedPercent: 10, resetsAt: sampleNow - 60),
+        ]))
+        #expect(timelineDates(s, from: sampleNow) == [0, 5, 10, 12].map { sampleNow + Double($0) * 60 })
+    }
+
+    @Test func noDataStillHasAnEntry() {
+        #expect(timelineDates(Snapshot(claude: PlanSnapshot(id: .claude), codex: PlanSnapshot(id: .codex)), from: sampleNow).count == 12)
+    }
+}

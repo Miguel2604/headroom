@@ -11,6 +11,7 @@ let package = Package(
     targets: [
         .target(name: "HeadroomCore"),
         .target(name: "HeadroomUI", dependencies: ["HeadroomCore"], resources: [.process("Fonts")]),
+        .testTarget(name: "HeadroomUITests", dependencies: ["HeadroomUI", "HeadroomCore"]),
         .testTarget(name: "HeadroomCoreTests", dependencies: ["HeadroomCore"], resources: [.copy("Fixtures")]),
     ]
 )

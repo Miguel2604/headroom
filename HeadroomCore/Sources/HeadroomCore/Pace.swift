@@ -44,3 +44,12 @@ public func dots(left: Double, evenLeft: Double, count n: Int) -> [Dot] {
     let pace = max(1, Int((evenLeft / 100 * Double(n)).rounded()))
     return (0..<n).map { $0 == pace - 1 ? .pace : $0 < on ? .on : .off }
 }
+
+/// Widget timeline: an entry every 5 minutes for the next hour, because even pace and
+/// "runs out at" move with time. Entries stop at the next reset, which gets its own entry.
+public func timelineDates(_ s: Snapshot, from now: Date) -> [Date] {
+    let nextReset = s.plans.flatMap(\.windows).map(\.resetsAt).filter { $0 > now }.min()
+    let end = min(now + 3600, nextReset ?? .distantFuture)
+    let steps = stride(from: now, to: end, by: 300).map { $0 }
+    return end == nextReset ? steps + [end] : steps
+}

@@ -3,10 +3,11 @@ import SwiftUI
 
 @main
 struct HeadroomApp: App {
-    @State private var store = Store()
+    @NSApplicationDelegateAdaptor private var delegate: AppDelegate
     @AppStorage("showMenuBarText") private var showText = true
 
     var body: some Scene {
+        let store = delegate.store
         MenuBarExtra {
             PanelView().environment(store)
         } label: {
@@ -18,6 +19,17 @@ struct HeadroomApp: App {
 
         Settings {
             SettingsView()
+        }
+    }
+}
+
+@MainActor final class AppDelegate: NSObject, NSApplicationDelegate {
+    let store = Store()
+
+    /// headroom://refresh, from a widget's Retry button.
+    func application(_ application: NSApplication, open urls: [URL]) {
+        if urls.contains(where: { $0.host == "refresh" }) {
+            Task { await store.refresh(force: true) }
         }
     }
 }

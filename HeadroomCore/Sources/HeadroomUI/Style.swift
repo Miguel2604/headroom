@@ -49,8 +49,9 @@ public struct DotMeter: View {
     var size: CGFloat
     @Environment(\.colorScheme) private var scheme
 
-    public init(_ pace: Pace, count: Int, size: CGFloat) {
-        dots = HeadroomCore.dots(left: pace.left, evenLeft: pace.evenLeft, count: count)
+    /// No pace (no data) draws every dot off.
+    public init(_ pace: Pace?, count: Int, size: CGFloat) {
+        dots = pace.map { HeadroomCore.dots(left: $0.left, evenLeft: $0.evenLeft, count: count) } ?? Array(repeating: .off, count: count)
         self.size = size
     }
 
@@ -93,31 +94,42 @@ public struct NoteView: View {
 
 /// "CLAUDE 5H  ●●●●○○  38%", as in the menu and the all-limits widget.
 public struct LimitRow: View {
-    var plan: PlanID
-    var window: LimitWindow
+    var plan: PlanSnapshot
+    var kind: WindowKind
     var now: Date
     var labelWidth: CGFloat
-    var dotCount: Int
 
-    public init(plan: PlanID, window: LimitWindow, now: Date, labelWidth: CGFloat = 88, dotCount: Int = 16) {
+    public init(plan: PlanSnapshot, kind: WindowKind, now: Date, labelWidth: CGFloat = 88) {
         self.plan = plan
-        self.window = window
+        self.kind = kind
         self.now = now
         self.labelWidth = labelWidth
-        self.dotCount = dotCount
     }
 
     public var body: some View {
-        let pace = window.pace(at: now)
-        let risky = note(for: window, at: now).style == .pill
+        let window = plan[kind]
+        let pace = window?.pace(at: now)
+        let risky = window.map { note(for: $0, at: now).style == .pill } ?? false
         HStack(spacing: 12) {
-            Text("\(plan.short) \(window.kind.label)").lbl()
+            Text("\(plan.id.short) \(kind.label)").lbl()
                 .opacity(risky ? 1 : 0.68)
                 .frame(width: labelWidth, alignment: .leading)
-            DotMeter(pace, count: dotCount, size: 6)
-            Text(percent(pace.left)).num(17).frame(width: 46, alignment: .trailing)
+            DotMeter(pace, count: 16, size: 6)
+            Text(pace.map { percent($0.left) } ?? "--").num(17).frame(width: 46, alignment: .trailing)
         }
+        .opacity(plan.problem == nil ? 1 : 0.4)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(HeadroomCore.accessibilityLabel(plan, window, at: now))
+        .accessibilityLabel(spokenLabel(plan, kind, now: now))
     }
+}
+
+/// The meter's VoiceOver label, including why it's dimmed.
+public func spokenLabel(_ plan: PlanSnapshot, _ kind: WindowKind, now: Date) -> String {
+    let base = plan[kind].map { HeadroomCore.accessibilityLabel(plan.id, $0, at: now) } ?? "\(plan.id.name) \(kind.label) limit: no data"
+    return plan.problem.map { "\(base). \($0.message)" } ?? base
+}
+
+/// "Claude 09:41 · Codex 04:24": how old each plan's numbers are.
+public func asOfLine(_ s: Snapshot) -> String {
+    s.plans.compactMap { p in p.asOf.map { "\(p.id.short) \(clockTime($0))" } }.joined(separator: " · ")
 }

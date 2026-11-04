@@ -75,6 +75,10 @@ public struct Note: Equatable, Sendable {
     public enum Style: Sendable { case plain, strong, pill }
     public var text: String
     public var style: Style
+    public init(text: String, style: Style) {
+        self.text = text
+        self.style = style
+    }
 }
 
 /// The short note beside a meter: "Out ~11:13", "Resets Mon", "Expires in 4h 39m".

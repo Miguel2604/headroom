@@ -19,10 +19,8 @@ struct PanelView: View {
                 .accessibilityElement(children: .combine)
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(s.plans, id: \.id) { plan in
-                        ForEach(plan.windows, id: \.kind) { w in
-                            LimitRow(plan: plan.id, window: w, now: now)
-                        }
-                        .opacity(plan.problem == nil ? 1 : 0.4)
+                        LimitRow(plan: plan, kind: .fiveHour, now: now)
+                        LimitRow(plan: plan, kind: .weekly, now: now)
                     }
                 }
                 status(s, now: now)
@@ -55,8 +53,8 @@ struct PanelView: View {
                     Text("\(plan.id.short): \(problem.message)").lbl().lineLimit(2).fixedSize(horizontal: false, vertical: true)
                 }
             }
-            let ages = s.plans.compactMap { p in p.asOf.map { "\(p.id.short) \(clockTime($0))" } }
-            if !ages.isEmpty { Text("As of " + ages.joined(separator: " · ")).lbl().secondary() }
+            let ages = asOfLine(s)
+            if !ages.isEmpty { Text("As of " + ages).lbl().secondary() }
         }
     }
 

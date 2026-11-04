@@ -9,20 +9,52 @@
 /* Begin PBXBuildFile section */
 		24AAE5F97B18DFCB795D286F /* HeadroomCore in Frameworks */ = {isa = PBXBuildFile; productRef = 99E0247ACE7E6682A4962F92 /* HeadroomCore */; };
 		2974EEA1C928B199B6B4DCED /* HeadroomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */; };
+		2A85B5C06243F4A76E6E6337 /* HeadroomWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84836217769053A9D2E04B15 /* HeadroomWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */; };
+		6FE8204313A034F0F9922FAE /* HeadroomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */; };
 		7C77554473E320B67E7F0E1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94BFA196A5539E753D24A3 /* SettingsView.swift */; };
+		811772748BB2B730AEDF97D5 /* HeadroomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 307F79E06263D8391332BAA4 /* HeadroomUI */; };
 		8FD80CB328DE9CB92EC1A11E /* HeadroomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9B0525E0E946893A6136DDB7 /* HeadroomUI */; };
 		96840EF4BFE8024943204444 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28C7FC75AEA712BF322DE9 /* PanelView.swift */; };
+		D3750F7493B9A0D7CD1A012F /* HeadroomCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4F333D8990141ED69AA70BAD /* HeadroomCore */; };
 		DC844463F663BF17660DAD6B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7887DB972FFCA9CC5B5472D5 /* Store.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1E2A5962D6F2D577C91592AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5F2DC8D92D80C6725E159CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6667A6266A7DF9436AF0DEC;
+			remoteInfo = HeadroomWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A3184A64FD94C95DD80090CD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2A85B5C06243F4A76E6E6337 /* HeadroomWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadroomApp.swift; sourceTree = "<group>"; };
+		191C6643B8FE26E67599F497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1E80C3142251E59C561CCCBC /* Headroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6A32C536A66A638404C701 /* HeadroomCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HeadroomCore; path = HeadroomCore; sourceTree = SOURCE_ROOT; };
+		3BDB3E93C2BB212482DD6AE2 /* HeadroomWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeadroomWidget.entitlements; sourceTree = "<group>"; };
 		4A94BFA196A5539E753D24A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5B28C7FC75AEA712BF322DE9 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadroomWidget.swift; sourceTree = "<group>"; };
 		7887DB972FFCA9CC5B5472D5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		84836217769053A9D2E04B15 /* HeadroomWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HeadroomWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BFBC593A832BE551F45464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Headroom.entitlements; sourceTree = "<group>"; };
 		FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
@@ -38,6 +70,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F07C42A95EE4F4D31C614019 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3750F7493B9A0D7CD1A012F /* HeadroomCore in Frameworks */,
+				811772748BB2B730AEDF97D5 /* HeadroomUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				1E80C3142251E59C561CCCBC /* Headroom.app */,
+				84836217769053A9D2E04B15 /* HeadroomWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,11 +99,22 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		5A05991B717350D9E7473433 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				3BDB3E93C2BB212482DD6AE2 /* HeadroomWidget.entitlements */,
+				722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */,
+				191C6643B8FE26E67599F497 /* Info.plist */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		62D65A057EA50D3E86A7F9F4 = {
 			isa = PBXGroup;
 			children = (
 				9CCEA420ED033F4E41BB6C9A /* App */,
 				1E2AC0590D8E0EEBB3FA5F0E /* Packages */,
+				5A05991B717350D9E7473433 /* Widget */,
 				13629C64DC71E34FB562AF3F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,10 +142,12 @@
 			buildPhases = (
 				E34AB7BC39BA4447F5B8BCDF /* Sources */,
 				0598300E07FB9068601F7EA2 /* Frameworks */,
+				A3184A64FD94C95DD80090CD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				53AAA12590F8BF1DC4272C91 /* PBXTargetDependency */,
 			);
 			name = Headroom;
 			packageProductDependencies = (
@@ -102,6 +157,26 @@
 			productName = Headroom;
 			productReference = 1E80C3142251E59C561CCCBC /* Headroom.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F6667A6266A7DF9436AF0DEC /* HeadroomWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E630BAF2B7A058E5287BCFA7 /* Build configuration list for PBXNativeTarget "HeadroomWidget" */;
+			buildPhases = (
+				99CA126033418A5B0D299544 /* Sources */,
+				F07C42A95EE4F4D31C614019 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeadroomWidget;
+			packageProductDependencies = (
+				4F333D8990141ED69AA70BAD /* HeadroomCore */,
+				307F79E06263D8391332BAA4 /* HeadroomUI */,
+			);
+			productName = HeadroomWidget;
+			productReference = 84836217769053A9D2E04B15 /* HeadroomWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -113,6 +188,10 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					4686BFD5F1855F6871F8CA0A = {
+						DevelopmentTeam = ZVM726QTBU;
+						ProvisioningStyle = Automatic;
+					};
+					F6667A6266A7DF9436AF0DEC = {
 						DevelopmentTeam = ZVM726QTBU;
 						ProvisioningStyle = Automatic;
 					};
@@ -136,11 +215,20 @@
 			projectRoot = "";
 			targets = (
 				4686BFD5F1855F6871F8CA0A /* Headroom */,
+				F6667A6266A7DF9436AF0DEC /* HeadroomWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		99CA126033418A5B0D299544 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FE8204313A034F0F9922FAE /* HeadroomWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34AB7BC39BA4447F5B8BCDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,6 +242,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53AAA12590F8BF1DC4272C91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6667A6266A7DF9436AF0DEC /* HeadroomWidget */;
+			targetProxy = 1E2A5962D6F2D577C91592AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		574DEEAA03EDB3B78AFC97D7 /* Debug */ = {
@@ -250,6 +346,38 @@
 			};
 			name = Release;
 		};
+		77856B82AE514F1361A9CBA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/HeadroomWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.miguelkalawdev.headroom.widget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9A1B796E17940A30EB5BD58A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/HeadroomWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.miguelkalawdev.headroom.widget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
 		C67A61C4264023A03B96474D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,6 +468,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		E630BAF2B7A058E5287BCFA7 /* Build configuration list for PBXNativeTarget "HeadroomWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A1B796E17940A30EB5BD58A /* Debug */,
+				77856B82AE514F1361A9CBA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -350,6 +487,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		307F79E06263D8391332BAA4 /* HeadroomUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HeadroomUI;
+		};
+		4F333D8990141ED69AA70BAD /* HeadroomCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HeadroomCore;
+		};
 		99E0247ACE7E6682A4962F92 /* HeadroomCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HeadroomCore;
