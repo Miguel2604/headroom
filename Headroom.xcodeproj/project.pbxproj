@@ -10,6 +10,7 @@
 		24AAE5F97B18DFCB795D286F /* HeadroomCore in Frameworks */ = {isa = PBXBuildFile; productRef = 99E0247ACE7E6682A4962F92 /* HeadroomCore */; };
 		2974EEA1C928B199B6B4DCED /* HeadroomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */; };
 		2A85B5C06243F4A76E6E6337 /* HeadroomWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84836217769053A9D2E04B15 /* HeadroomWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3828A9A33E9B2B2C2F8BF159 /* DesktopPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF418F12FF99519E33A4832 /* DesktopPanel.swift */; };
 		63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */; };
 		6FE8204313A034F0F9922FAE /* HeadroomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */; };
 		7C77554473E320B67E7F0E1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94BFA196A5539E753D24A3 /* SettingsView.swift */; };
@@ -57,6 +58,7 @@
 		84836217769053A9D2E04B15 /* HeadroomWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HeadroomWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BFBC593A832BE551F45464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Headroom.entitlements; sourceTree = "<group>"; };
+		DAF418F12FF99519E33A4832 /* DesktopPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopPanel.swift; sourceTree = "<group>"; };
 		FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 		9CCEA420ED033F4E41BB6C9A /* App */ = {
 			isa = PBXGroup;
 			children = (
+				DAF418F12FF99519E33A4832 /* DesktopPanel.swift */,
 				D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */,
 				13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */,
 				C4BFBC593A832BE551F45464 /* Info.plist */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3828A9A33E9B2B2C2F8BF159 /* DesktopPanel.swift in Sources */,
 				2974EEA1C928B199B6B4DCED /* HeadroomApp.swift in Sources */,
 				63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */,
 				96840EF4BFE8024943204444 /* PanelView.swift in Sources */,

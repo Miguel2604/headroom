@@ -92,3 +92,13 @@ public enum AppGroup {
     public static var snapshotURL: URL? { container?.appending(path: "snapshot.json") }
     public static var defaults: UserDefaults? { UserDefaults(suiteName: id) }
 }
+
+/// Tinted glass, or no fill at all with a soft shadow behind the content.
+public enum Backdrop: String, Codable, CaseIterable, Sendable {
+    case tinted, clear
+    public static let key = "background"
+    /// The global choice, set in Settings. Each widget can override it.
+    public static var global: Backdrop {
+        AppGroup.defaults?.string(forKey: key).flatMap(Backdrop.init) ?? .tinted
+    }
+}

@@ -133,3 +133,27 @@ public func spokenLabel(_ plan: PlanSnapshot, _ kind: WindowKind, now: Date) -> 
 public func asOfLine(_ s: Snapshot) -> String {
     s.plans.compactMap { p in p.asOf.map { "\(p.id.short) \(clockTime($0))" } }.joined(separator: " · ")
 }
+
+/// The tinted-glass fill: a dark or light translucent layer over a blur.
+public struct TintedGlass: View {
+    @Environment(\.colorScheme) private var scheme
+    public init() {}
+    public var body: some View {
+        ZStack {
+            Rectangle().fill(.ultraThinMaterial)
+            scheme == .dark ? Color(red: 12 / 255, green: 12 / 255, blue: 12 / 255).opacity(0.46) : Color.white.opacity(0.5)
+        }
+    }
+}
+
+extension View {
+    /// The fully clear look: no fill, a soft shadow behind the content for legibility.
+    public func clearShadow() -> some View { modifier(ClearShadow()) }
+}
+
+private struct ClearShadow: ViewModifier {
+    @Environment(\.colorScheme) private var scheme
+    func body(content: Content) -> some View {
+        content.shadow(color: scheme == .dark ? .black.opacity(0.55) : .white.opacity(0.7), radius: 8, y: 1)
+    }
+}

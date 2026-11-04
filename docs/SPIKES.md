@@ -42,4 +42,20 @@ Live. Each call returns the current numbers. Headroom calls it at most every 5 m
 
 ## S2: are clear widgets truly transparent?
 
-Tested in Phase 6, once the widget exists. See below.
+Checked on 2026-11-04 on macOS 27.0. **Only partly answered.**
+
+### What's known
+
+- System Settings › Desktop & Dock has **"Dim widgets on desktop"**, set to **Automatically** by default. So macOS does change desktop widgets when the desktop isn't focused, which is one of the two things this spike asked about.
+- The Fully clear widget uses `.containerBackground(for: .widget) { Color.clear }` plus the content shadow, and the per-widget Background option (Default, Tinted glass, Fully clear) is wired up.
+- The Desktop Panel renders as intended: a borderless, transparent `NSPanel` at the desktop-icon window level (`-2147483603`) on every Space, with live data, in both backgrounds.
+
+### What isn't
+
+Whether macOS draws its own plate or blur behind a Fully clear widget, in focused or dimmed mode, has not been observed. Placing widgets needs the desktop's Edit Widgets gallery, and automated computer use couldn't drive it on this Mac: Finder's desktop and the menu bar clock both returned `noWindowsAvailable`.
+
+**To finish it by hand:** add a Large "Headroom" widget, set its Background to Fully clear, and look at it over a busy wallpaper with the desktop focused, then with another app in front.
+
+### Decision
+
+Desktop Panel mode ships, opt-in, in Settings › Desktop panel. macOS dimming widgets is enough reason by itself, and the panel is the one mode that is guaranteed transparent and never dimmed. WidgetKit widgets stay available in both backgrounds. If the manual check shows clear widgets are truly transparent, the panel is still useful for the undimmed look.

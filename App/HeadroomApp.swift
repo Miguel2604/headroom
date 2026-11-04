@@ -25,6 +25,11 @@ struct HeadroomApp: App {
 
 @MainActor final class AppDelegate: NSObject, NSApplicationDelegate {
     let store = Store()
+    private var desktopPanel: DesktopPanel?
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        desktopPanel = DesktopPanel(store: store)
+    }
 
     /// headroom://refresh, from a widget's Retry button.
     func application(_ application: NSApplication, open urls: [URL]) {
