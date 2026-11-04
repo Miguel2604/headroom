@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Desktop with coding quota widgets</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&amp;family=Fragment+Mono&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#fff}a:hover{color:#ccc}
+::selection{background:#fff;color:#000}
+.num{font-family:'Doto',ui-monospace,monospace;font-weight:900;letter-spacing:0}
+.lbl{font-family:'Fragment Mono',ui-monospace,monospace;font-size:11px;line-height:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.dots{display:flex;justify-content:space-between;align-items:center}
+.d{border-radius:50%;flex-shrink:0;box-sizing:border-box}
+.d-on{background:currentColor}
+.d-off{background:currentColor;opacity:.22}
+.d-pace{box-shadow:inset 0 0 0 1.5px currentColor}
+.mi{display:flex;align-items:center;justify-content:space-between;height:26px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:#fff;font-family:'Fragment Mono',ui-monospace,monospace;font-size:11.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-align:left;cursor:default}
+.mi:hover,.mi:focus-visible{background:#fff;color:#000;outline:none}
+.mi:hover .kb,.mi:focus-visible .kb{color:rgba(0,0,0,.6)}
+.kb{color:rgba(255,255,255,.6);letter-spacing:0}
+.extra{display:flex;align-items:center;gap:6px;height:24px;padding:0 8px;border:0;border-radius:6px;background:transparent;color:inherit;font-family:'Fragment Mono',ui-monospace,monospace;font-size:12px;font-weight:500;cursor:default}
+.extra:hover{background:rgba(255,255,255,.14)}
+.extra[aria-expanded="true"]{background:rgba(255,255,255,.22)}
+.extra:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.glyph{display:grid;grid-template-columns:repeat(5,2.4px);gap:1.4px 1px}
+.glyph span{width:2.4px;height:2.4px;border-radius:50%;background:currentColor}
+.glyph .off{opacity:.3}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; position: relative; overflow: hidden; background: #3A3A3A; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif; -webkit-font-smoothing: antialiased">
+<img src="/_blob/ae78eca847af583cb29cc01e5847a98a" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; filter: grayscale(1) contrast(1.08) brightness(0.92)">
+
+<header style="position: absolute; left: 0; top: 0; right: 0; height: 32px; display: flex; align-items: center; gap: 20px; padding: 0 16px; box-sizing: border-box; color: rgba(255, 255, 255, 0.94); font-size: 13px">
+  <span style="font-weight: 700">Terminal</span>
+  <span>Shell</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span>
+  <div style="flex-grow: 1"></div>
+  <button class="extra" aria-label="Coding quotas, tightest limit 38 percent left" aria-expanded="{{openAttr}}" onClick="{{toggle}}">
+    <span class="glyph" aria-hidden="true"><span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span><span></span><span class="off"></span></span>
+    <span>38%</span>
+  </button>
+  <svg width="17" height="13" viewBox="0 0 17 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1.5 4.5a10 10 0 0 1 14 0"></path><path d="M4 7.2a6.4 6.4 0 0 1 9 0"></path><path d="M6.6 9.9a2.8 2.8 0 0 1 3.8 0"></path></svg>
+  <svg width="26" height="13" viewBox="0 0 26 13" aria-hidden="true"><rect x="0.75" y="0.75" width="21.5" height="11.5" rx="3.2" fill="none" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.2"></rect><rect x="2.5" y="2.5" width="14" height="8" rx="1.8" fill="currentColor"></rect><path d="M23.6 4.5v4a2 2 0 0 0 0-4z" fill="currentColor" fill-opacity="0.45"></path></svg>
+  <span style="font-weight: 500">Wed 4 Nov  9:41</span>
+</header>
+
+<sc-if value="{{open}}" hint-placeholder-val="{{ true }}">
+<div role="menu" aria-label="Coding quotas" style="position: absolute; top: 36px; right: 12px; width: 312px; box-sizing: border-box; padding: 6px; display: flex; flex-direction: column; background: rgba(14, 14, 14, 0.58); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 14px 36px rgba(0, 0, 0, 0.4)">
+  <div style="padding: 12px 10px 14px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <span class="num" style="font-size: 30px; line-height: 30px">USE CODEX</span>
+      <span class="lbl">Until 12:12 · Claude out ~11:13</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 88px minmax(0, 1fr) 46px; align-items: center; gap: 12px">
+          <span class="lbl" style="opacity: {{r.labelOpacity}}">{{r.short}} {{r.label}}</span>
+          <div class="dots" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{r.left}}" aria-label="{{r.aria}}">
+            <sc-for list="{{r.dots16}}" as="d" hint-placeholder-count="16"><span class="d d-{{d.s}}" style="width: 6px; height: 6px"></span></sc-for>
+          </div>
+          <span class="num" style="font-size: 17px; line-height: 18px; text-align: right">{{r.left}}%</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div role="separator" style="height: 1px; margin: 0 10px 6px; background: rgba(255, 255, 255, 0.14)"></div>
+  <button class="mi" role="menuitem">Refresh <span class="kb">⌘R</span></button>
+  <button class="mi" role="menuitem">Open Claude usage</button>
+  <button class="mi" role="menuitem">Open Codex usage</button>
+  <div role="separator" style="height: 1px; margin: 6px 10px; background: rgba(255, 255, 255, 0.14)"></div>
+  <button class="mi" role="menuitem">Settings… <span class="kb">⌘,</span></button>
+  <button class="mi" role="menuitem">Quit Quotas <span class="kb">⌘Q</span></button>
+</div>
+</sc-if>
+
+<div style="position: absolute; left: 24px; top: 56px; display: flex; flex-direction: column; gap: 24px">
+  <section aria-label="Coding quotas widget" style="width: 364px; height: 382px; box-sizing: border-box; padding: 20px; display: flex; flex-direction: column; background: rgba(12, 12, 12, 0.46); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border-radius: 24px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1)">
+    <h2 class="num" style="margin: 0; font-size: 38px; line-height: 38px">USE CODEX</h2>
+    <p class="lbl" style="margin: 8px 0 0">Until 12:12 · Claude out ~11:13</p>
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 22px">
+      <sc-for list="{{plans}}" as="p" hint-placeholder-count="2">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span class="lbl" style="opacity: 0.68">{{p.name}} — {{p.tier}}</span>
+          <sc-for list="{{p.windows}}" as="w" hint-placeholder-count="2">
+            <div style="display: flex; flex-direction: column; gap: 7px">
+              <div style="display: flex; justify-content: space-between; align-items: center; height: 20px">
+                <span style="display: flex; align-items: center; gap: 8px">
+                  <span class="lbl">{{w.label}}</span>
+                  <sc-if value="{{w.risk}}" hint-placeholder-val="{{ false }}"><span class="lbl" style="padding: 2px 7px; border-radius: 999px; background: #fff; color: #000">{{w.note}}</span></sc-if>
+                  <sc-if value="{{w.calm}}" hint-placeholder-val="{{ true }}"><span class="lbl" style="opacity: 0.68">{{w.note}}</span></sc-if>
+                </span>
+                <span class="num" style="font-size: 20px; line-height: 20px">{{w.left}}%</span>
+              </div>
+              <div class="dots" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{w.left}}" aria-label="{{w.aria}}">
+                <sc-for list="{{w.dots24}}" as="d" hint-placeholder-count="24"><span class="d d-{{d.s}}" style="width: 8px; height: 8px"></span></sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex-grow: 1"></div>
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span class="lbl" style="display: flex; align-items: center; gap: 6px; opacity: 0.68"><span class="d d-pace" aria-hidden="true" style="width: 8px; height: 8px; opacity: 1"></span>Even pace</span>
+      <span class="lbl" style="opacity: 0.68">09:41</span>
+    </div>
+  </section>
+
+  <div style="display: flex; gap: 24px">
+    <sc-for list="{{smalls}}" as="s" hint-placeholder-count="2">
+      <section aria-label="{{s.name}} 5-hour widget" style="width: 170px; height: 170px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; background: rgba(12, 12, 12, 0.46); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border-radius: 24px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1)">
+        <span class="lbl" style="opacity: 0.68">{{s.short}} · 5h</span>
+        <div style="flex-grow: 1"></div>
+        <span class="num" style="font-size: 50px; line-height: 50px">{{s.left}}%</span>
+        <div class="dots" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{s.left}}" aria-label="{{s.aria}}" style="margin-top: 12px">
+          <sc-for list="{{s.dots14}}" as="d" hint-placeholder-count="14"><span class="d d-{{d.s}}" style="width: 7px; height: 7px"></span></sc-for>
+        </div>
+        <div style="margin-top: 12px; height: 18px; display: flex; align-items: center">
+          <sc-if value="{{s.risk}}" hint-placeholder-val="{{ false }}"><span class="lbl" style="padding: 2px 7px; border-radius: 999px; background: #fff; color: #000">{{s.note}}</span></sc-if>
+          <sc-if value="{{s.calm}}" hint-placeholder-val="{{ true }}"><span class="lbl" style="opacity: 0.68">{{s.note}}</span></sc-if>
+        </div>
+      </section>
+    </sc-for>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: true };
+  }
+  renderVals() {
+    // Lit dots = quota left; the hollow dot = where an even rate would leave you now.
+    function dots(left, pace, n) {
+      var on = Math.round(left / 100 * n), p = Math.max(1, Math.round(pace / 100 * n)), out = [];
+      for (var i = 0; i < n; i++) out.push({ s: i === p - 1 ? 'pace' : (i < on ? 'on' : 'off') });
+      return out;
+    }
+    // Sample state at Wed 4 Nov, 09:41. left: % of the limit remaining. pace: % an even rate would leave now.
+    var raw = [
+      { name: 'Claude Code', short: 'Claude', tier: 'Max', windows: [
+        { label: '5h', left: 38, pace: 50, note: 'Out ~11:13', risk: true },
+        { label: 'Week', left: 74, pace: 71, note: 'Resets Mon' } ] },
+      { name: 'Codex', short: 'Codex', tier: 'Pro', windows: [
+        { label: '5h', left: 77, pace: 64, note: 'Resets 12:53' },
+        { label: 'Week', left: 43, pace: 3, note: 'Resets in 4h 39m' } ] }
+    ];
+    var rows = [];
+    var plans = raw.map(function (p) {
+      return Object.assign({}, p, { windows: p.windows.map(function (w) {
+        var d = Object.assign({}, w, {
+          short: p.short,
+          risk: !!w.risk, calm: !w.risk,
+          labelOpacity: w.risk ? 1 : 0.68,
+          dots14: dots(w.left, w.pace, 14), dots16: dots(w.left, w.pace, 16), dots24: dots(w.left, w.pace, 24),
+          aria: p.name + ' ' + w.label + ' limit: ' + w.left + '% left, ' + w.note
+        });
+        rows.push(d);
+        return d;
+      }) });
+    });
+    var smalls = plans.map(function (p) { return Object.assign({ name: p.name }, p.windows[0]); });
+    var self = this;
+    return {
+      plans: plans, rows: rows, smalls: smalls,
+      open: this.state.open,
+      openAttr: this.state.open ? 'true' : 'false',
+      toggle: function () { self.setState({ open: !self.state.open }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
