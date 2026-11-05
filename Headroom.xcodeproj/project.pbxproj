@@ -12,6 +12,7 @@
 		2A85B5C06243F4A76E6E6337 /* HeadroomWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84836217769053A9D2E04B15 /* HeadroomWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3828A9A33E9B2B2C2F8BF159 /* DesktopPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF418F12FF99519E33A4832 /* DesktopPanel.swift */; };
 		63787257EB707ECE9C349FBE /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC8ECC3CF3FE2BB76EE17AE /* MenuBarIcon.swift */; };
+		6A42E4FE5666163EACAC9C24 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 45FC57610BDB8B9AEAF1EB6A /* AppIcon.icon */; };
 		6FE8204313A034F0F9922FAE /* HeadroomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */; };
 		7C77554473E320B67E7F0E1D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94BFA196A5539E753D24A3 /* SettingsView.swift */; };
 		811772748BB2B730AEDF97D5 /* HeadroomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 307F79E06263D8391332BAA4 /* HeadroomUI */; };
@@ -51,6 +52,7 @@
 		1E80C3142251E59C561CCCBC /* Headroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6A32C536A66A638404C701 /* HeadroomCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HeadroomCore; path = HeadroomCore; sourceTree = SOURCE_ROOT; };
 		3BDB3E93C2BB212482DD6AE2 /* HeadroomWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeadroomWidget.entitlements; sourceTree = "<group>"; };
+		45FC57610BDB8B9AEAF1EB6A /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		4A94BFA196A5539E753D24A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5B28C7FC75AEA712BF322DE9 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		722820CC9E5B4C5F5E022CB9 /* HeadroomWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadroomWidget.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		9CCEA420ED033F4E41BB6C9A /* App */ = {
 			isa = PBXGroup;
 			children = (
+				45FC57610BDB8B9AEAF1EB6A /* AppIcon.icon */,
 				DAF418F12FF99519E33A4832 /* DesktopPanel.swift */,
 				D160F2584AFB70A37B1CD1AA /* Headroom.entitlements */,
 				13EF8EF54D23913AA87C8045 /* HeadroomApp.swift */,
@@ -144,6 +147,7 @@
 			buildConfigurationList = 3E29D1F7476724620C0F38FD /* Build configuration list for PBXNativeTarget "Headroom" */;
 			buildPhases = (
 				E34AB7BC39BA4447F5B8BCDF /* Sources */,
+				F5B60506CE511B37E1A6269B /* Resources */,
 				0598300E07FB9068601F7EA2 /* Frameworks */,
 				A3184A64FD94C95DD80090CD /* Embed Foundation Extensions */,
 			);
@@ -222,6 +226,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5B60506CE511B37E1A6269B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A42E4FE5666163EACAC9C24 /* AppIcon.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		99CA126033418A5B0D299544 /* Sources */ = {
